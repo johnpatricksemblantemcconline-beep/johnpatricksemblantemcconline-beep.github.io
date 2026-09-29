@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>English Learning Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>📚 English Learning Hub</h1>
+        <p>Learn English. Practice. Improve.</p>
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <button onclick="showPage('home')">
+            🏠 Home
+        </button>
+
+        <button onclick="showPage('lesson')">
+            🎥 Lesson
+        </button>
+
+        <button onclick="showPage('vocabulary')">
+            📚 Vocabulary
+        </button>
+
+        <button onclick="showPage('quiz')">
+            🎯 Quiz
+        </button>
+
+    </nav>
+
+
+    <!-- ================= HOME PAGE ================= -->
+
+    <section id="home" class="page">
+
+        <h2>Welcome to English Learning Hub! 👋</h2>
+
+        <p>
+            Welcome, students! This website is designed to help you
+            learn English in a fun and interactive way.
+        </p>
+
+        <div class="welcome-box">
+
+            <h3>What would you like to do?</h3>
+
+            <button onclick="showPage('lesson')">
+                🎥 Watch a Lesson
+            </button>
+
+            <button onclick="showPage('vocabulary')">
+                📚 Learn Vocabulary
+            </button>
+
+            <button onclick="showPage('quiz')">
+                🎯 Take a Quiz
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LESSON PAGE ================= -->
+
+    <section id="lesson" class="page">
+
+        <h2>🎥 Lesson Video</h2>
+
+        <p>
+            Watch the lesson video carefully before taking the quiz.
+        </p>
+
+        <div class="video-container">
+
+            <video controls>
+
+                <source
+                    src="video/lesson.mp4"
+                    type="video/mp4">
+
+                Your browser does not support the video element.
+
+            </video>
+
+        </div>
+
+        <p class="video-note">
+            💡 Tip: Take notes while watching the lesson!
+        </p>
+
+    </section>
+
+
+    <!-- ================= VOCABULARY PAGE ================= -->
+
+    <section id="vocabulary" class="page">
+
+        <h2>📚 Vocabulary</h2>
+
+        <p>
+            Choose a topic that you want to study.
+        </p>
+
+        <div class="topic-container">
+
+            <button
+                class="topic-button"
+                onclick="showTopic('noun')">
+
+                📘
+                <strong>Nouns</strong>
+
+                <span>
+                    Learn about nouns
+                </span>
+
+            </button>
+
+
+            <button
+                class="topic-button"
+                onclick="showTopic('verb')">
+
+                🏃
+                <strong>Verbs</strong>
+
+                <span>
+                    Learn about verbs
+                </span>
+
+            </button>
+
+
+            <button
+                class="topic-button"
+                onclick="showTopic('adjective')">
+
+                🎨
+                <strong>Adjectives</strong>
+
+                <span>
+                    Learn about adjectives
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- Noun Lesson -->
+
+        <div id="nounTopic" class="topic-content">
+
+            <h3>📘 Nouns</h3>
+
+            <p>
+                A noun is a word that names a person, place,
+                thing, animal, or idea.
+            </p>
+
+            <p>
+                Examples:
+                <strong>teacher, school, book, dog, happiness</strong>
+            </p>
+
+        </div>
+
+
+        <!-- Verb Lesson -->
+
+        <div id="verbTopic" class="topic-content">
+
+            <h3>🏃 Verbs</h3>
+
+            <p>
+                A verb is a word that shows an action or state of being.
+            </p>
+
+            <p>
+                Examples:
+                <strong>run, jump, write, sing, read</strong>
+            </p>
+
+        </div>
+
+
+        <!-- Adjective Lesson -->
+
+        <div id="adjectiveTopic" class="topic-content">
+
+            <h3>🎨 Adjectives</h3>
+
+            <p>
+                An adjective is a word that describes a noun.
+            </p>
+
+            <p>
+                Examples:
+                <strong>beautiful, tall, happy, red, intelligent</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= QUIZ PAGE ================= -->
+
+    <section id="quiz" class="page">
+
+        <h2>🎯 English Quiz</h2>
+
+        <p>
+            Choose a topic and answer 10 questions.
+        </p>
+
+
+        <div class="topic-container">
+
+            <button
+                class="topic-button"
+                onclick="openQuiz('noun')">
+
+                📘
+                <strong>Noun Quiz</strong>
+
+                <span>
+                    10 Questions
+                </span>
+
+            </button>
+
+
+            <button
+                class="topic-button"
+                onclick="openQuiz('verb')">
+
+                🏃
+                <strong>Verb Quiz</strong>
+
+                <span>
+                    10 Questions
+                </span>
+
+            </button>
+
+
+            <button
+                class="topic-button"
+                onclick="openQuiz('adjective')">
+
+                🎨
+                <strong>Adjective Quiz</strong>
+
+                <span>
+                    10 Questions
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- QUIZ QUESTIONS -->
+
+        <div
+            id="quizArea"
+            class="quiz-area">
+
+            <h2 id="quizTitle"></h2>
+
+            <form id="topicQuiz"></form>
+
+            <button
+                class="submit-button"
+                onclick="submitTopicQuiz()">
+
+                Submit Quiz
+
+            </button>
+
+            <h3 id="topicResult"></h3>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 English Learning Hub
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
