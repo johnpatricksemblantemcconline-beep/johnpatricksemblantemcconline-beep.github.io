@@ -347,7 +347,7 @@
 
         </section>
 
-
+        
 
         <!-- ================= LESSON ================= -->
 
@@ -606,7 +606,31 @@
 
 
         <!-- ================= QUIZ ================= -->
+        
+        <!-- ================= STUDENT NAME ENTRY ================= -->
+<!--
+        <div id="studentEntry" class="student-entry" style="display: none;">
+            <div class="student-entry-box">
 
+                <h2>Welcome to the Quiz!</h2>
+                <p>Please enter your name before starting.</p>
+
+                <input 
+                    type="text" 
+                    id="studentName" 
+                    placeholder="Enter your name"
+                    maxlength="50"
+                >
+
+                <button onclick="continueToQuiz()">
+                    Continue to Quiz
+                </button>
+
+                <p id="nameError" class="name-error"></p>
+
+            </div>
+        </div>
+-->
         <section id="quiz" class="page">
 
             <div class="page-header">
@@ -626,7 +650,32 @@
 
             </div>
 
+                        <!-- ================= STUDENT NAME ENTRY ================= -->
 
+            <div id="studentEntry" class="student-entry" style="display: none;">
+
+                <div class="student-entry-box">
+
+                    <h2>Welcome to the Quiz!</h2>
+
+                    <p>Please enter your name before starting.</p>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter your name"
+                        maxlength="50"
+                    >
+
+                    <button onclick="continueToQuiz()">
+                        Continue to Quiz
+                    </button>
+
+                    <p id="nameError" class="name-error"></p>
+
+                </div>
+
+            </div>
             <!-- QUIZ TOPIC SELECTION -->
 
             <div id="quizSelection" class="quiz-selection">
@@ -645,7 +694,7 @@
                         Test your understanding of nouns.
                     </p>
 
-                    <button onclick="openQuiz('noun')">
+                    <button onclick="startNounQuiz()">
                         Start Noun Quiz →
                     </button>
 
@@ -666,7 +715,7 @@
                         Test your understanding of verbs.
                     </p>
 
-                    <button onclick="openQuiz('verb')">
+                    <button onclick="startVerbQuiz()">
                         Start Verb Quiz →
                     </button>
 
@@ -687,7 +736,7 @@
                         Test your understanding of adjectives.
                     </p>
 
-                    <button onclick="openQuiz('adjective')">
+                    <button onclick="startAdjectiveQuiz()">
                         Start Adjective Quiz →
                     </button>
 
@@ -742,6 +791,22 @@
         </section>
 
     </main>
+
+    <!-- ================= QUIZ RECORDS ================= -->
+
+        <div class="quiz-records">
+
+            <h2>Quiz Records</h2>
+
+            <p class="records-description">
+                Your quiz results will appear here.
+            </p>
+
+            <div id="recordsContainer">
+                <p>No quiz records yet.</p>
+            </div>
+
+        </div>
 
 
     <!-- ================= FOOTER ================= -->

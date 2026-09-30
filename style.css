@@ -2420,3 +2420,286 @@ nav {
     }
 
 }
+
+/* ================= STUDENT ENTRY ================= */
+
+.student-entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.student-entry-box {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.student-entry-box h2 {
+    margin-bottom: 10px;
+}
+
+.student-entry-box p {
+    margin-bottom: 20px;
+}
+
+#studentName {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.student-entry-box button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.name-error {
+    color: #d93025;
+    margin-top: 12px;
+}
+
+
+/* ================= QUIZ RECORDS ================= */
+
+.quiz-records {
+    margin-top: 40px;
+    padding: 25px;
+}
+
+.quiz-records h2 {
+    text-align: center;
+}
+
+.records-description {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.records-table th,
+.records-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.records-table th {
+    font-weight: bold;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .student-entry-box {
+        padding: 25px 20px;
+    }
+
+    .records-table {
+        font-size: 14px;
+    }
+
+    .records-table th,
+    .records-table td {
+        padding: 8px 5px;
+    }
+
+}
+
+/* ================= STUDENT NAME ENTRY ================= */
+
+.student-entry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 350px;
+}
+
+.student-entry-box {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    padding: 40px 45px;
+    border-radius: 20px;
+    text-align: center;
+
+    border: 1px solid #e5e9f0;
+
+    box-shadow:
+        0 15px 35px rgba(20, 40, 70, 0.12),
+        0 4px 10px rgba(20, 40, 70, 0.06);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative top line */
+
+.student-entry-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #172a46;
+}
+
+
+/* Title */
+
+.student-entry-box h2 {
+    margin: 10px 0 10px;
+    color: #172a46;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+
+/* Description */
+
+.student-entry-box p {
+    color: #667085;
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+
+/* Name input */
+
+#studentName {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px 18px;
+
+    border: 2px solid #e1e6ed;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #172a46;
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Input when clicked */
+
+#studentName:focus {
+    border-color: #172a46;
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(23, 42, 70, 0.08);
+}
+
+
+/* Placeholder */
+
+#studentName::placeholder {
+    color: #98a2b3;
+}
+
+
+/* Continue button */
+
+.student-entry-box button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #172a46;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Button hover */
+
+.student-entry-box button:hover {
+    background: #223b60;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(23, 42, 70, 0.20);
+}
+
+
+/* Button click */
+
+.student-entry-box button:active {
+    transform: translateY(0);
+}
+
+
+/* Error message */
+
+.name-error {
+    color: #d92d20 !important;
+    font-size: 14px !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .student-entry {
+        padding: 35px 15px;
+    }
+
+    .student-entry-box {
+        padding: 35px 25px;
+    }
+
+    .student-entry-box h2 {
+        font-size: 24px;
+    }
+
+}

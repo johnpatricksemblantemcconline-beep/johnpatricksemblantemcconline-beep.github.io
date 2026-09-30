@@ -650,7 +650,86 @@ const quizzes = {
 
 
 
-/* ================= OPEN QUIZ ================= */
+
+/* ================= STUDENT NAME & QUIZ RECORD ================= */
+
+let currentStudentName = "";
+let currentQuizTopic = "";
+
+
+
+/* ================= START QUIZ FUNCTIONS ================= */
+
+// Noun Quiz
+function startNounQuiz() {
+    prepareQuiz("noun");
+}
+
+// Verb Quiz
+function startVerbQuiz() {
+    prepareQuiz("verb");
+}
+
+// Adjective Quiz
+function startAdjectiveQuiz() {
+    prepareQuiz("adjective");
+}
+
+
+/* ================= PREPARE QUIZ ================= */
+
+function prepareQuiz(topic) {
+
+    currentQuizTopic = topic;
+
+    // Hide quiz selection
+    document.getElementById("quizSelection").style.display = "none";
+
+    // Show name entry
+    document.getElementById("studentEntry").style.display = "block";
+
+    // Clear previous name
+    document.getElementById("studentName").value = "";
+
+    // Clear error
+    document.getElementById("nameError").textContent = "";
+
+    // Focus on name input
+    document.getElementById("studentName").focus();
+
+}
+
+
+/* ================= CONTINUE TO QUIZ ================= */
+
+function continueToQuiz() {
+
+    const nameInput = document
+        .getElementById("studentName")
+        .value
+        .trim();
+
+    const errorMessage =
+        document.getElementById("nameError");
+
+    // Check if name is empty
+    if (nameInput === "") {
+
+        errorMessage.textContent =
+            "Please enter your name before continuing.";
+
+        return;
+    }
+
+    // Save student name
+    currentStudentName = nameInput;
+
+    // Hide name entry
+    document.getElementById("studentEntry").style.display = "none";
+
+    // Open selected quiz
+    openQuiz(currentQuizTopic);
+}
 
 function openQuiz(topic) {
 
@@ -826,6 +905,8 @@ function submitTopicQuiz() {
 
     let score = 0;
 
+    
+
 
     quiz.forEach((item, index) => {
 
@@ -848,6 +929,13 @@ function submitTopicQuiz() {
         }
 
     });
+
+    // Save student's result
+saveQuizRecord(
+    currentStudentName,
+    topic,
+    score
+);
 
 
     const result =
@@ -910,6 +998,116 @@ function submitTopicQuiz() {
     });
 
 }
+/* ================= SAVE QUIZ RECORD ================= */
+
+function saveQuizRecord(studentName, topic, score) {
+
+    // Get existing records
+    let records =
+        JSON.parse(localStorage.getItem("quizRecords")) || [];
+
+    // Create new record
+    const newRecord = {
+
+        name: studentName,
+
+        quiz:
+            topic.charAt(0).toUpperCase() +
+            topic.slice(1) +
+            " Quiz",
+
+        score: score + "/10",
+
+        date: new Date().toLocaleDateString()
+
+    };
+
+    // Add new record
+    records.push(newRecord);
+
+    // Save records
+    localStorage.setItem(
+        "quizRecords",
+        JSON.stringify(records)
+    );
+
+    // Display records
+    displayQuizRecords();
+}
+
+/* ================= DISPLAY QUIZ RECORDS ================= */
+
+function displayQuizRecords() {
+
+    const container =
+        document.getElementById("recordsContainer");
+
+    if (!container) {
+        return;
+    }
+
+    const records =
+        JSON.parse(localStorage.getItem("quizRecords")) || [];
+
+    // No records yet
+    if (records.length === 0) {
+
+        container.innerHTML =
+            "<p>No quiz records yet.</p>";
+
+        return;
+    }
+
+    let tableHTML = `
+
+        <table class="records-table">
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Quiz</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+    `;
+
+    records.forEach(record => {
+
+        tableHTML += `
+
+            <tr>
+
+                <td>${record.name}</td>
+
+                <td>${record.quiz}</td>
+
+                <td>${record.score}</td>
+
+                <td>${record.date}</td>
+
+            </tr>
+
+        `;
+
+    });
+
+    tableHTML += `
+
+            </tbody>
+
+        </table>
+
+    `;
+
+    container.innerHTML = tableHTML;
+}
+
+
 
 
 
@@ -966,5 +1164,12 @@ function showTopic(topic, clickedButton = null) {
 document.addEventListener("DOMContentLoaded", function () {
 
     showPage("home");
+    
+    displayQuizRecords();
 
 });
+
+
+
+
+
