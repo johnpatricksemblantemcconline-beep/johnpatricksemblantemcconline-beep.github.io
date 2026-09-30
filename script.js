@@ -1,3 +1,4 @@
+/*
 function showPage(pageName) {
 
     const pages = document.querySelectorAll(".page");
@@ -375,3 +376,595 @@ function showPage(pageName) {
 // Show Home page when website opens
 
 showPage("home");
+*/
+
+function showPage(pageName, clickedButton = null) {
+
+    // Hide all pages
+    const pages = document.querySelectorAll(".page");
+
+    pages.forEach(page => {
+
+        page.classList.remove("active-page");
+
+    });
+
+
+    // Show selected page
+    const selectedPage = document.getElementById(pageName);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active-page");
+
+    }
+
+
+    // Remove active state from navigation buttons
+    const navButtons = document.querySelectorAll(".nav-btn");
+
+    navButtons.forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    // Find the correct navigation button
+    if (clickedButton) {
+
+        clickedButton.classList.add("active");
+
+    } else {
+
+        navButtons.forEach(button => {
+
+            const buttonText =
+                button.textContent.trim().toLowerCase();
+
+            if (buttonText === pageName.toLowerCase()) {
+
+                button.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+
+    // Scroll to top
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* ================= QUIZ DATA ================= */
+
+const quizzes = {
+
+    noun: [
+
+        {
+            question: "Which word is a noun?",
+            choices: ["Run", "Teacher", "Beautiful", "Quickly"],
+            answer: 1
+        },
+
+        {
+            question: "Which word names a place?",
+            choices: ["School", "Jump", "Happy", "Slowly"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a noun?",
+            choices: ["Sing", "Red", "Book", "Quickly"],
+            answer: 2
+        },
+
+        {
+            question: "Which word names an animal?",
+            choices: ["Dog", "Run", "Beautiful", "Loudly"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is an idea or feeling?",
+            choices: ["Chair", "Happiness", "Jump", "Blue"],
+            answer: 1
+        },
+
+        {
+            question: "Which word is a noun?",
+            choices: ["Teacher", "Write", "Tall", "Quickly"],
+            answer: 0
+        },
+
+        {
+            question: "Which word names a thing?",
+            choices: ["Book", "Run", "Happy", "Slowly"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a noun?",
+            choices: ["Beautiful", "School", "Jump", "Quickly"],
+            answer: 1
+        },
+
+        {
+            question: "Which word names a person?",
+            choices: ["Teacher", "Sing", "Red", "Slowly"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a noun?",
+            choices: ["Happiness", "Run", "Beautiful", "Quickly"],
+            answer: 0
+        }
+
+    ],
+
+
+
+    verb: [
+
+        {
+            question: "Which word is a verb?",
+            choices: ["Run", "Teacher", "Beautiful", "School"],
+            answer: 0
+        },
+
+        {
+            question: "Which word shows an action?",
+            choices: ["Book", "Jump", "Red", "Teacher"],
+            answer: 1
+        },
+
+        {
+            question: "Which word is a verb?",
+            choices: ["School", "Write", "Beautiful", "Dog"],
+            answer: 1
+        },
+
+        {
+            question: "Which word shows an action?",
+            choices: ["Sing", "Blue", "Chair", "Happy"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a verb?",
+            choices: ["Read", "Teacher", "Beautiful", "School"],
+            answer: 0
+        },
+
+        {
+            question: "Which word shows an action?",
+            choices: ["Jump", "Book", "Red", "Happiness"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a verb?",
+            choices: ["Write", "School", "Tall", "Dog"],
+            answer: 0
+        },
+
+        {
+            question: "Which word shows an action?",
+            choices: ["Run", "Teacher", "Beautiful", "Book"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is a verb?",
+            choices: ["Sing", "School", "Happy", "Red"],
+            answer: 0
+        },
+
+        {
+            question: "Which word shows an action?",
+            choices: ["Read", "Teacher", "Blue", "Book"],
+            answer: 0
+        }
+
+    ],
+
+
+
+    adjective: [
+
+        {
+            question: "Which word is an adjective?",
+            choices: ["Run", "Beautiful", "Teacher", "School"],
+            answer: 1
+        },
+
+        {
+            question: "Which word describes a noun?",
+            choices: ["Tall", "Jump", "Book", "Sing"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is an adjective?",
+            choices: ["Happy", "Run", "Teacher", "School"],
+            answer: 0
+        },
+
+        {
+            question: "Which word describes something?",
+            choices: ["Red", "Jump", "Book", "Read"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is an adjective?",
+            choices: ["Intelligent", "Run", "Teacher", "Sing"],
+            answer: 0
+        },
+
+        {
+            question: "Which word describes a noun?",
+            choices: ["Beautiful", "Jump", "Book", "Write"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is an adjective?",
+            choices: ["Tall", "Run", "School", "Read"],
+            answer: 0
+        },
+
+        {
+            question: "Which word describes a noun?",
+            choices: ["Happy", "Sing", "Teacher", "Jump"],
+            answer: 0
+        },
+
+        {
+            question: "Which word is an adjective?",
+            choices: ["Red", "Run", "Book", "Write"],
+            answer: 0
+        },
+
+        {
+            question: "Which word describes a noun?",
+            choices: ["Intelligent", "Jump", "School", "Read"],
+            answer: 0
+        }
+
+    ]
+
+};
+
+
+
+/* ================= OPEN QUIZ ================= */
+
+function openQuiz(topic) {
+
+    const quiz = quizzes[topic];
+
+    if (!quiz) {
+
+        return;
+
+    }
+
+
+    const quizSelection =
+        document.getElementById("quizSelection");
+
+    const quizArea =
+        document.getElementById("quizArea");
+
+    const quizTitle =
+        document.getElementById("quizTitle");
+
+    const topicQuiz =
+        document.getElementById("topicQuiz");
+
+    const topicResult =
+        document.getElementById("topicResult");
+
+
+    // Hide topic selection
+    quizSelection.style.display = "none";
+
+
+    // Show quiz
+    quizArea.style.display = "block";
+
+
+    // Clear old questions
+    topicQuiz.innerHTML = "";
+
+
+    // Clear previous result
+    topicResult.innerHTML = "";
+
+    topicResult.className = "quiz-result";
+
+
+    // Set title
+    quizTitle.textContent =
+        topic.charAt(0).toUpperCase() +
+        topic.slice(1) +
+        " Quiz";
+
+
+    // Create questions
+    quiz.forEach((item, index) => {
+
+        const questionDiv =
+            document.createElement("div");
+
+        questionDiv.className = "question";
+
+
+        let choicesHTML = "";
+
+
+        item.choices.forEach((choice, choiceIndex) => {
+
+            choicesHTML += `
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="question${index}"
+                        value="${choiceIndex}"
+                    >
+
+                    ${choice}
+
+                </label>
+
+            `;
+
+        });
+
+
+        questionDiv.innerHTML = `
+
+            <h4>
+                ${index + 1}. ${item.question}
+            </h4>
+
+            ${choicesHTML}
+
+        `;
+
+
+        topicQuiz.appendChild(questionDiv);
+
+    });
+
+
+    // Scroll to quiz
+    quizArea.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
+}
+
+
+
+/* ================= CLOSE QUIZ ================= */
+
+function closeQuiz() {
+
+    const quizSelection =
+        document.getElementById("quizSelection");
+
+    const quizArea =
+        document.getElementById("quizArea");
+
+    const topicResult =
+        document.getElementById("topicResult");
+
+
+    quizArea.style.display = "none";
+
+    quizSelection.style.display = "grid";
+
+    topicResult.innerHTML = "";
+
+    topicResult.className = "quiz-result";
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+
+/* ================= SUBMIT QUIZ ================= */
+
+function submitTopicQuiz() {
+
+    const title =
+        document.getElementById("quizTitle").textContent;
+
+
+    const topic =
+        title.replace(" Quiz", "").toLowerCase();
+
+
+    const quiz =
+        quizzes[topic];
+
+
+    if (!quiz) {
+
+        return;
+
+    }
+
+
+    let score = 0;
+
+
+    quiz.forEach((item, index) => {
+
+        const selected =
+            document.querySelector(
+                `input[name="question${index}"]:checked`
+            );
+
+
+        if (selected) {
+
+            if (
+                parseInt(selected.value) === item.answer
+            ) {
+
+                score++;
+
+            }
+
+        }
+
+    });
+
+
+    const result =
+        document.getElementById("topicResult");
+
+
+    let message = "";
+
+
+    if (score === 10) {
+
+        message =
+            `🎉 Perfect Score! You got ${score}/10. Excellent work!`;
+
+        result.className =
+            "quiz-result success";
+
+    }
+
+    else if (score >= 8) {
+
+        message =
+            `👏 Great job! You got ${score}/10. Keep it up!`;
+
+        result.className =
+            "quiz-result success";
+
+    }
+
+    else if (score >= 5) {
+
+        message =
+            `👍 Good effort! You got ${score}/10. Keep practicing!`;
+
+        result.className =
+            "quiz-result average";
+
+    }
+
+    else {
+
+        message =
+            `📚 You got ${score}/10. Keep studying and try again!`;
+
+        result.className =
+            "quiz-result retry";
+
+    }
+
+
+    result.textContent = message;
+
+
+    result.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+}
+
+
+
+/* ================= VOCABULARY ================= */
+
+function showTopic(topic, clickedButton = null) {
+
+    const topics =
+        document.querySelectorAll(".topic-content");
+
+
+    topics.forEach(item => {
+
+        item.classList.remove("active-topic");
+
+    });
+
+
+    const selectedTopic =
+        document.getElementById(topic);
+
+
+    if (selectedTopic) {
+
+        selectedTopic.classList.add("active-topic");
+
+    }
+
+
+    // Update topic buttons
+    const topicButtons =
+        document.querySelectorAll(".topic-btn");
+
+
+    topicButtons.forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    if (clickedButton) {
+
+        clickedButton.classList.add("active");
+
+    }
+
+}
+
+
+
+/* ================= INITIAL PAGE ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    showPage("home");
+
+});
