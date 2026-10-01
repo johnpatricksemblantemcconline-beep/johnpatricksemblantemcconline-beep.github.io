@@ -965,7 +965,156 @@ main {
     color: var(--blue);
 
 }
+/* =================================
+   HERO BACKGROUND VIDEO
+================================= */
 
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background video */
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+/* Dark overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 1;
+}
+
+/* Keep the website content above the video */
+.hero-text,
+.hero-card {
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   FULL-WIDTH HERO + CENTERED CONTENT
+========================================= */
+
+.hero {
+    position: relative;
+
+    width: 100vw;
+    min-height: 520px;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    overflow: hidden;
+
+    display: grid;
+
+    /* THIS KEEPS THE CONTENT CENTERED */
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+
+    align-items: center;
+
+    gap: 80px;
+
+    /* Creates the same centered space as the example */
+    padding-left: max(4%, calc((100vw - 1180px) / 2));
+    padding-right: max(4%, calc((100vw - 1180px) / 2));
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BACKGROUND VIDEO
+========================================= */
+
+.hero-bg-video {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.42);
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   CONTENT ABOVE VIDEO
+========================================= */
+
+.hero-text,
+.hero-card {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Make the text readable on the video */
+
+.hero h2 {
+    color: white;
+}
+
+.hero-text > p {
+    color: white;
+}
+
+.hero .eyebrow {
+    color: #7da7ff;
+}
+
+.hero h2 span {
+    color: #4f83ff;
+}
+
+
+/* Hero card stays on top */
+
+.hero-card {
+    position: relative;
+    z-index: 2;
+}
 
 /* ================= HERO CARD ================= */
 
@@ -980,8 +1129,10 @@ main {
     padding: 35px;
 
     box-shadow: var(--shadow);
+    
 
 }
+
 
 
 .hero-card-top {
@@ -2702,4 +2853,426 @@ nav {
         font-size: 24px;
     }
 
+}
+
+/* =========================================
+   SIDEWAYS MOVING HEADING CAROUSEL
+========================================= */
+
+.heading-carousel {
+    width: 100%;
+    max-width: 650px;
+
+    height: 155px;
+
+    margin: 30px auto 40px;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+/* Moving track */
+
+.heading-track {
+    display: flex;
+
+    width: 300%;
+    height: 100%;
+
+    animation: slideHeading 12s infinite ease-in-out;
+}
+
+
+/* Individual slides */
+
+.heading-slide {
+    flex: 0 0 33.333333%;
+
+    width: 33.333333%;
+
+    height: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* Heading */
+
+.heading-slide h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 38px;
+
+    color: var(--navy);
+
+    line-height: 1.2;
+
+    margin: 5px 0 10px;
+}
+
+
+/* Description */
+
+.heading-slide p {
+    color: var(--muted);
+
+    margin: 0;
+
+    font-size: 15px;
+}
+
+
+/* Eyebrow */
+
+.heading-slide .eyebrow {
+    display: block;
+}
+
+
+/* =========================================
+   SIDEWAYS ANIMATION
+========================================= */
+
+@keyframes slideHeading {
+
+    /* Slide 1 */
+
+    0% {
+        transform: translateX(0);
+    }
+
+    27% {
+        transform: translateX(0);
+    }
+
+
+    /* Move to Slide 2 */
+
+    33% {
+        transform: translateX(-33.333333%);
+    }
+
+    60% {
+        transform: translateX(-33.333333%);
+    }
+
+
+    /* Move to Slide 3 */
+
+    66% {
+        transform: translateX(-66.666666%);
+    }
+
+    93% {
+        transform: translateX(-66.666666%);
+    }
+
+
+    /* Return to Slide 1 */
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .heading-carousel {
+        height: 175px;
+
+        margin-bottom: 40px;
+    }
+
+    .heading-slide h2 {
+        font-size: 30px;
+    }
+
+    .heading-slide p {
+        font-size: 14px;
+
+        padding: 0 15px;
+    }
+
+}
+
+/* =========================================
+   VOCABULARY BACKGROUND PICTURES
+========================================= */
+
+.topic-area {
+    width: 100%;
+}
+
+
+/* Main picture container */
+
+.topic-background {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 265px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    box-shadow: var(--shadow-small);
+
+}
+
+
+/* =========================================
+   NOUN BACKGROUND
+========================================= */
+
+.noun-background {
+
+    background-image: url("Pictures/Nouns.png");
+
+}
+
+
+/* =========================================
+   VERB BACKGROUND
+========================================= */
+
+.verb-background {
+
+    background-image: url("Pictures/Verbs.png");
+
+}
+
+
+/* =========================================
+   ADJECTIVE BACKGROUND
+========================================= */
+
+.adjective-background {
+
+    background-image: url("Pictures/Adjectives.png");
+
+}
+
+
+/* Dark/light overlay */
+
+.topic-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.836) 1%,
+    rgba(255, 255, 255, 0.363) 30%,
+    rgba(255, 255, 255, 0.25) 65%,
+    rgba(255, 255, 255, 0.02) 100%
+);
+
+}
+
+
+/* Content placed above picture */
+
+.topic-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 265px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 100px 40px;
+
+}
+
+
+/* Text area */
+
+.topic-text {
+
+    max-width: 720px;
+
+}
+
+
+/* Topic icon */
+
+.topic-inner .topic-icon {
+
+    width: 70px;
+
+    height: 70px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    background: var(--blue-soft);
+
+    color: var(--blue);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topic-background {
+
+        min-height: 360px;
+
+    }
+
+    .topic-inner {
+
+        min-height: 360px;
+
+        padding: 30px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+    }
+
+    .topic-overlay {
+
+        background: rgba(255, 255, 255, 0.88);
+
+    }
+
+}
+
+/* =========================================
+   LEARNING JOURNEY - APP STYLE OPENING
+========================================= */
+
+.hero-card {
+    animation: journeyCardOpen 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+    transform-origin: center center;
+
+    will-change: transform, opacity;
+}
+
+
+/* The card grows, stretches and settles */
+
+@keyframes journeyCardOpen {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            perspective(1000px)
+            translateY(35px)
+            scaleX(0.55)
+            scaleY(0.65)
+            rotateX(12deg)
+            rotateY(-8deg);
+
+        border-radius: 45px;
+    }
+
+    25% {
+        opacity: 1;
+
+        transform:
+            perspective(1000px)
+            translateY(0)
+            scaleX(0.82)
+            scaleY(0.88)
+            rotateX(6deg)
+            rotateY(-4deg);
+
+        border-radius: 35px;
+    }
+
+    50% {
+        transform:
+            perspective(1000px)
+            translateY(-5px)
+            scaleX(1.06)
+            scaleY(1.04)
+            rotateX(-2deg)
+            rotateY(2deg);
+
+        border-radius: 27px;
+    }
+
+    70% {
+        transform:
+            perspective(1000px)
+            translateY(2px)
+            scaleX(0.98)
+            scaleY(0.99)
+            rotateX(1deg)
+            rotateY(-1deg);
+
+        border-radius: 25px;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            perspective(1000px)
+            translateY(0)
+            scaleX(1)
+            scaleY(1)
+            rotateX(0)
+            rotateY(0);
+
+        border-radius: 24px;
+    }
 }
