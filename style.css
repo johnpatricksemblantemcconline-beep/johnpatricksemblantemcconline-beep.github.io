@@ -633,16 +633,40 @@ html {
 
 
 body {
+    font-family: 'DM Sans', sans-serif;
 
-    font-family: "DM Sans", Arial, sans-serif;
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(125, 211, 252, 0.75),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(196, 181, 253, 0.75),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(249, 168, 212, 0.65),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 85%,
+            rgba(253, 186, 116, 0.55),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #f5f0ff,
+            #fff5f8
+        );
 
-    background: var(--cream);
-
-    color: var(--text);
-
-    line-height: 1.6;
-
+    background-attachment: fixed;
+    color: #25233a;
 }
+
 
 
 button {
@@ -670,6 +694,8 @@ main {
     margin: auto;
 
     padding: 70px 0;
+
+    background: transparent;
 
 }
 
@@ -3276,3 +3302,4 @@ nav {
         border-radius: 24px;
     }
 }
+
