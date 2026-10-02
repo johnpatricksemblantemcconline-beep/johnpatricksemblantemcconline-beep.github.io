@@ -835,38 +835,54 @@ main {
 
     background: transparent;
 
-    color: var(--muted);
+    color: #596579;
 
     padding: 10px 16px;
 
-    border-radius: 9px;
+    border-radius: 12px;
 
     font-size: 14px;
 
     font-weight: 600;
 
-    transition: 0.25s;
+    transition: all 0.25s ease;
 
 }
 
 
 .nav-btn:hover {
 
-    color: var(--blue);
+    color: #356ae6;
 
-    background: var(--blue-soft);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(125, 211, 252, 0.25),
+            rgba(196, 181, 253, 0.25),
+            rgba(249, 168, 212, 0.22)
+        );
+
+    transform: translateY(-2px);
 
 }
 
 
 .nav-btn.active {
 
-    color: var(--white);
+    color: white;
 
-    background: var(--navy);
+    background:
+        linear-gradient(
+            135deg,
+            #5b7cfa,
+            #8b6de8,
+            #d77fb8
+        );
+
+    box-shadow:
+        0 6px 18px rgba(91, 124, 250, 0.25);
 
 }
-
 
 /* ================= HERO ================= */
 
