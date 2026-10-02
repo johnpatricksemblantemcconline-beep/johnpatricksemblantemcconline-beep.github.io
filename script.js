@@ -1169,7 +1169,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* =========================================
+   MOBILE BACKGROUND VIDEO
+========================================= */
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const heroVideo = document.querySelector(".hero-bg-video");
+
+    if (heroVideo) {
+
+        heroVideo.muted = true;
+        heroVideo.setAttribute("muted", "");
+        heroVideo.setAttribute("playsinline", "");
+        heroVideo.setAttribute("webkit-playsinline", "");
+
+        const playVideo = () => {
+            const playPromise = heroVideo.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    console.log("Background video autoplay was blocked.");
+                });
+            }
+        };
+
+        playVideo();
+
+        document.addEventListener("touchstart", playVideo, {
+            once: true
+        });
+
+    }
+
+});
 
 
 
