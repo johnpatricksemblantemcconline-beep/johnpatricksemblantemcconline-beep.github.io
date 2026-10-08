@@ -41,6 +41,10 @@
     <span>Profile</span>
 </button>
 
+<button id="teacherLoginBtn">
+    👩‍🏫 Teacher Login
+</button>
+
             <nav class="main-nav">
 
                 <button class="nav-btn active" onclick="showPage('home', this)">
@@ -57,6 +61,12 @@
 
                 <button class="nav-btn" onclick="showPage('quiz', this)">
                     Quiz
+                </button>
+
+                <button
+                    class="nav-btn learning-links-nav"
+                    onclick="showPage('links', this)">
+                    🔗 Learning Links
                 </button>
 
             </nav>
@@ -868,7 +878,96 @@
             </div>
 
         </section>
+        
+        <!-- ================= LEARNING LINKS ================= -->
 
+<section id="links" class="page">
+
+    <div class="page-header">
+
+    <span class="eyebrow">
+        YOUR LEARNING TOOLKIT
+    </span>
+
+    <h2>
+        Learning Links
+    </h2>
+
+    <p>
+        Discover useful websites and resources selected
+        to help you practice, explore, and improve your English.
+    </p>
+
+    <div class="links-header-line">
+
+        <span></span>
+
+        <strong>LEARN • PRACTICE • IMPROVE</strong>
+
+        <span></span>
+
+    </div>
+
+    </div>
+
+
+    <!-- TEACHER ONLY: ADD LINK -->
+
+    <div
+        id="addLinkCard"
+        class="add-link-card"
+        style="display: none;">
+
+        <h3>
+            🌷 Add a Learning Link
+        </h3>
+
+        <p>
+            Enter the website information below.
+        </p>
+
+        <input
+            type="text"
+            id="linkTitle"
+            placeholder="Website title">
+
+        <input
+            type="url"
+            id="linkURL"
+            placeholder="https://example.com">
+
+        <button onclick="addLearningLink()">
+            ➕ Add Link
+        </button>
+
+    </div>
+
+    <div class="teacher-picks-label">
+
+    <div class="teacher-picks-icon">
+        🔗
+    </div>
+
+    <div>
+        <strong>Teacher Picks</strong>
+        <span>Useful resources for your English journey</span>
+    </div>
+
+</div>
+
+    <!-- LEARNING LINKS -->
+
+    <div
+        id="linksContainer"
+        class="links-container">
+
+        <div class="empty-links">
+            🌷 No learning links yet.
+        </div>
+
+    </div>
+
+</section>
     </main>
 
     <!-- ================= QUIZ RECORDS ================= -->
@@ -914,7 +1013,68 @@
 
     </footer>
 
+    <!-- ================= TEACHER LOGIN MODAL ================= -->
 
+<div id="teacherAuthModal" class="auth-modal">
+
+    <div class="auth-box">
+
+        <button
+            class="auth-close"
+            onclick="closeTeacherLogin()">
+            ×
+        </button>
+
+        <div class="auth-icon">
+            👩‍🏫
+        </div>
+
+        <h2 id="authTitle">
+            Teacher Login
+        </h2>
+
+        <p id="authSubtitle">
+            Log in to manage your learning links.
+        </p>
+
+        <div class="auth-form">
+
+            <label for="teacherEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="teacherEmail"
+                placeholder="Teacher email">
+
+            <label for="teacherPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="teacherPassword"
+                placeholder="Enter your password">
+
+            <button
+                id="authMainButton"
+                onclick="handleTeacherAuth()">
+                🔐 Log In
+            </button>
+
+            <p
+                id="authMessage"
+                class="auth-message">
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 
 </body>
